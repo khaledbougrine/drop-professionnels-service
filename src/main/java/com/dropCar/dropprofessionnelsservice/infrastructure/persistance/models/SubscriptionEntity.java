@@ -12,11 +12,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 // Spring imports
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.lang.Nullable;
 
 // J2EE imports
 import java.time.Instant;
+import java.util.List;
 
 /**
  * Entity to manage the persistence of the client subscriptions
@@ -35,7 +35,7 @@ import java.time.Instant;
 //       @UniqueConstraint(name = "uc_subscription_entity_client_module", columnNames = {"client_id", "module_id"})
 //})
 @Table(name = "subscription")
-@EntityListeners(AuditingEntityListener.class)
+//@EntityListeners(AuditingEntityListener.class)
 public class SubscriptionEntity extends AAuditableVersionedEntity {
     /** Unique identifier/primary key of this partner module subscription */
     @Id
@@ -60,16 +60,16 @@ public class SubscriptionEntity extends AAuditableVersionedEntity {
     //////////////////
     // ASSOCIATIONS //
     //////////////////
-    /** Details about the client associated to this partner module subscription */
-    @NotNull(message = "{subscription.client.id.not-null}")
-    @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "client_id", nullable = false, foreignKey = @ForeignKey(name = "FK_SUBSCRIPTION_CLIENT"))
-    private ClientEntity client;
+//    /** Details about the client associated to this partner module subscription */
+//    @NotNull(message = "{subscription.client.id.not-null}")
+//    @OneToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.PERSIST)
+////    @JoinColumn(name = "client_id", nullable = false, foreignKey = @ForeignKey(name = "FK_SUBSCRIPTION_CLIENT"))
+//    private ClientEntity client;
 
     /** Details about the partner module associated to this client subscription */
     @NotNull(message = "{subscription.module.id.not-null}")
-    @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "module_id", nullable = false, foreignKey = @ForeignKey(name = "FK_SUBSCRIPTION_MODULE"))
-    private ModuleEntity module;
+    @ManyToOne
+    @JoinColumn(name = "module_id", insertable = false, updatable = false)
+    private OfferEntity module;
 
 }
