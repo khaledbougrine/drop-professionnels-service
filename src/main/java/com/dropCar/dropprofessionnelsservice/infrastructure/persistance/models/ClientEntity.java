@@ -1,5 +1,7 @@
 package com.dropCar.dropprofessionnelsservice.infrastructure.persistance.models;
 
+import org.springframework.stereotype.Indexed;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,6 +14,7 @@ import lombok.Setter;
 @Setter
 @Table(name = "client")
 @Entity
+@Indexed
 public class ClientEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)

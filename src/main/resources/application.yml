@@ -30,6 +30,8 @@ spring:
         missing_cache_strategy: create
         region:
           factory_class: org.hibernate.cache.jcache.JCacheRegionFactory
+  profiles:
+    active: docker
   cache:
     jcache:
       provider: org.ehcache.jsr107.EhcacheCachingProvider
@@ -61,3 +63,4 @@ drop-car:
       url: ${SPRING_DATASOURCE_URL}
       user: ${SPRING_DATASOURCE_USERNAME}
       password: ${SPRING_DATASOURCE_PASSWORD}
+#liquibase config
