@@ -1,0 +1,36 @@
+package com.dropCar.dropprofessionnelsservice.infrastructure.persistance.models;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.util.Date;
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@Entity
+@Table(name = "car", indexes = {
+        @Index(name = "MultiIndex", columnList = "id, client_id", unique = true)
+
+})
+public class CarEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "id", nullable = false)
+    private Long id;
+    private String immatricule;
+    private String brand;
+    private String model;
+    private Double kilometrage;
+    private int age;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "category_id")
+    private CategoryEntity category;
+    @ManyToOne
+    @JoinColumn(name = "client_id", insertable = false, updatable = false)
+    private ClientEntity client;
+}

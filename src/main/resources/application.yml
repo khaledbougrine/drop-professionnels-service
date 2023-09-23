@@ -30,8 +30,6 @@ spring:
         missing_cache_strategy: create
         region:
           factory_class: org.hibernate.cache.jcache.JCacheRegionFactory
-  profiles:
-    active: docker
   cache:
     jcache:
       provider: org.ehcache.jsr107.EhcacheCachingProvider
