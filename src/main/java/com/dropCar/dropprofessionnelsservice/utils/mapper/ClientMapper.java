@@ -1,7 +1,8 @@
 package com.dropCar.dropprofessionnelsservice.utils.mapper;
 
-import com.dropCar.dropprofessionnelsservice.api.dto.ClientDto;
+import com.dropCar.dropprofessionnelsservice.api.dto.RegisterUserDto;
 import com.dropCar.dropprofessionnelsservice.application.domain.ClientDomain;
+import com.dropCar.dropprofessionnelsservice.application.domain.ClientSecurityDomain;
 import com.dropCar.dropprofessionnelsservice.infrastructure.persistance.models.ClientEntity;
 import jakarta.validation.constraints.NotNull;
 import lombok.NonNull;
@@ -18,8 +19,8 @@ public final class ClientMapper {
      * @param clientDomain The ClientDomain object to be converted.
      * @return The corresponding ClientDto object.
      */
-    public static @NonNull ClientDto fromDomainToDto(final @NotNull ClientDomain clientDomain) {
-        final ClientDto clientDto = new ClientDto();
+    public static @NonNull RegisterUserDto fromDomainToDto(final @NotNull ClientDomain clientDomain) {
+        final RegisterUserDto clientDto = new RegisterUserDto();
         BeanUtils.copyProperties(clientDomain, clientDto);
 
         // TODO: Implement the mapping logic if needed.
@@ -33,7 +34,7 @@ public final class ClientMapper {
      * @param clientDto The ClientDto object to be converted.
      * @return The corresponding ClientDomain object.
      */
-    public static @NonNull ClientDomain fromDtoToDomain(final @NotNull ClientDto clientDto) {
+    public static @NonNull ClientDomain fromDtoToDomain(final @NotNull RegisterUserDto clientDto) {
         final ClientDomain clientDomain = new ClientDomain();
         BeanUtils.copyProperties(clientDto, clientDomain);
 
@@ -50,6 +51,16 @@ public final class ClientMapper {
      */
     public static @NonNull ClientDomain fromEntityToDomain(@NonNull final ClientEntity clientEntity) {
         final ClientDomain clientDomain = new ClientDomain();
+        BeanUtils.copyProperties(clientEntity, clientDomain);
+
+        // TODO: Implement the mapping logic if needed.
+
+        return clientDomain;
+    }
+
+
+    public static @NonNull ClientSecurityDomain fromEntityToSecurityDomain(@NonNull final ClientEntity clientEntity) {
+        final ClientSecurityDomain clientDomain = new ClientSecurityDomain();
         BeanUtils.copyProperties(clientEntity, clientDomain);
 
         // TODO: Implement the mapping logic if needed.

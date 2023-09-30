@@ -1,15 +1,17 @@
-package com.dropCar.dropprofessionnelsservice.application.domain;
+package com.dropCar.dropprofessionnelsservice.api.dto;
 
 import com.dropCar.dropprofessionnelsservice.utils.Enum.StatesEnum;
 import lombok.Data;
 
+import java.io.Serializable;
 
-//@With
 @Data
-public class ClientDomain {
+public class RegisterUserDto implements Serializable {
     private String name;
     private String lastName;
+    private String userName;
     private Integer phoneNumber;
     private StatesEnum statesEnum;
+    private  String password;
 
 }

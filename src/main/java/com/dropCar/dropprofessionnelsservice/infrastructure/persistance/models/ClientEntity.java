@@ -17,12 +17,12 @@ public class ClientEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id", nullable = false)
     private Long id;
-
     private String name;
-    private Integer numberOfCars;
+    private String password;
+    private String phoneNumber;
+    private  String userName;
     @OneToOne
     private SubscriptionEntity subscriptionEntity;
-
 
 
 }
