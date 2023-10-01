@@ -19,18 +19,20 @@ import static com.dropCar.dropprofessionnelsservice.utils.mapper.CarMapper.*;
 public class CreateCar {
     private final CarRepository carRepository;
     private final CategoryRepository categoryRepository;
+
     @Transactional
-    public @NotNull  CarDto create(final @NonNull CarDto carDto){
-        CarEntity carEntity = buildEntity(carDto);
-        CategoryEntity categoryDb =categoryRepository.findCategoryEntitiesById(carDto.getCategory_id());
-        carEntity.setCategory(categoryDb);
-        CarEntity carDb= carRepository.save(carEntity);
-        return fromDomainToDto(fromEntityToDomain(carDb));
-    };
+    public  CarDto create(final @NonNull CarDto carDto) {
+//        CarEntity carEntity = buildEntity(carDto);
+////        CategoryEntity categoryDb = categoryRepository.findCategoryEntitiesById(carDto.getCategory_id());
+//        carEntity.setCategory(categoryDb);
+//        CarEntity carDb = carRepository.save(carEntity);
+//        return fromDomainToDto(fromEntityToDomain(carDb));
+        return null;
+    }
+
     private @NotNull CarEntity buildEntity(@NonNull final CarDto carDto) {
         CarEntity carEntity = new CarEntity();
-        BeanUtils.copyProperties(carDto,carEntity);
-
+        BeanUtils.copyProperties(carDto, carEntity);
         return carEntity;
     }
 

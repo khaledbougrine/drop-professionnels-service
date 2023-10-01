@@ -34,6 +34,9 @@ import java.io.IOException;
 public class SecurityConfig {
 
     private static final String LOG_OUT_URL = "/logout";
+    private static final String NO_SECURE_ENDPOINT = "/**";
+
+
     private final ClientLoader clientLoader;
 
     @Bean
@@ -76,7 +79,7 @@ public class SecurityConfig {
                 .csrf()
                 .disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/usr/**")
+                .requestMatchers(NO_SECURE_ENDPOINT)
                 .permitAll()
                 .anyRequest()
                 .authenticated()

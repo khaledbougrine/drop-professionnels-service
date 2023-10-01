@@ -49,7 +49,9 @@ public class CreateClient {
         ClientEntity clientEntity = new ClientEntity();
         BeanUtils.copyProperties(clientDto, clientEntity);
         clientEntity.setPassword(passwordEncoder.encode(clientDto.getPassword()));
+        clientEntity.setPhoneNumber(clientDto.getPhoneNumber());
         // TODO: Implement the mapping logic if needed.
+        
 
         return clientEntity;
     }

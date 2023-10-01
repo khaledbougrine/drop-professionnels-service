@@ -10,7 +10,7 @@ public class RegisterUserDto implements Serializable {
     private String name;
     private String lastName;
     private String userName;
-    private Integer phoneNumber;
+    private String phoneNumber;
     private StatesEnum statesEnum;
     private  String password;
 

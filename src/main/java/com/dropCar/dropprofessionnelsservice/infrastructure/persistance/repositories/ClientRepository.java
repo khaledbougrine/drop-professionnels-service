@@ -9,11 +9,11 @@ import java.util.Optional;
 
 @Repository
 public interface ClientRepository extends JpaRepository<ClientEntity, Long> {
-    Optional<ClientEntity> findByName(String name);
+//    Optional<ClientEntity> findByName(String name);
 
     Optional<ClientEntity> findByUserName(String userName);
-
-    public ClientEntity findByUserame(String username);
-    public ClientEntity findByPhoneNumber(Integer phoneNumber);
+//
+//    public ClientEntity findByUserame(String username);
+//    public ClientEntity findByPhoneNumber(Integer phoneNumber);
 
 }

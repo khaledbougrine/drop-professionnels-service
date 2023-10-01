@@ -19,14 +19,14 @@ import java.util.Date;
 public class CarEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
     private String immatricule;
     private String brand;
     private String model;
     private Double kilometrage;
-    private int age;
+    private Integer age;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "category_id")
     private CategoryEntity category;
