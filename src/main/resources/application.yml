@@ -6,8 +6,8 @@ spring:
     url: ${drop-car.datasource.url}
     username: ${drop-car.datasource.user}
     password: ${drop-car.datasource.password}
-    hikari:
-      auto-commit: false
+#    hikari:
+#      auto-commit: false
   jpa:
     show-sql: true
     defer-datasource-initialization: false
@@ -17,42 +17,37 @@ spring:
         default_schema: public
         session.events.log.LOG_QUERIES_SLOWER_THAN_MS: 100
         hbm2ddl:
-          auto: update
+          auto: validate
         format_sql: true
-      javax:
-        persistence:
-          schema-generation:
-            database:
-              action: update
       cache:
         use_second_level_cache: true
         use_query_cache: true
         missing_cache_strategy: create
         region:
           factory_class: org.hibernate.cache.jcache.JCacheRegionFactory
-  cache:
-    jcache:
-      provider: org.ehcache.jsr107.EhcacheCachingProvider
+#  cache:
+#    jcache:
+#      provider: org.ehcache.jsr107.EhcacheCachingProvider
   liquibase:
     enabled: true
     change-log: classpath:/db/db.changelog-master.xml
     label-filter: "mapping"
-  sql:
-    init:
-      encoding: UTF-8
-      mode: always
-  data:
-    jdbc:
-      repositories:
-        enabled: true
-  batch:
-    jdbc:
-      initialize-schema: never
-  main:
-    banner-mode: off
-  mvc:
-    pathmatch:
-      matching-strategy: ant_path_matcher
+#  sql:
+#    init:
+#      encoding: UTF-8
+#      mode: always
+#  data:
+#    jdbc:
+#      repositories:
+#        enabled: true
+#  batch:
+#    jdbc:
+#      initialize-schema: never
+#  main:
+#    banner-mode: off
+#  mvc:
+#    pathmatch:
+#      matching-strategy: ant_path_matcher
 # PeopleSpheres specific configurations
 drop-car:
   # APP_ENVIRONMENT comes from container environment
@@ -61,3 +56,11 @@ drop-car:
       url: ${SPRING_DATASOURCE_URL}
       user: ${SPRING_DATASOURCE_USERNAME}
       password: ${SPRING_DATASOURCE_PASSWORD}
+#liquibase config
+
+APP_ENVIRONMENT: "local"
+SPRING_DATASOURCE_URL: "jdbc:postgresql://localhost:5432/dropcar"
+SPRING_DATASOURCE_DATABASE: "dropcar"
+SPRING_DATASOURCE_HOSTNAME: "localhost"
+SPRING_DATASOURCE_USERNAME: "postgres"
+SPRING_DATASOURCE_PASSWORD: "postgres"

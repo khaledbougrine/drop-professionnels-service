@@ -15,7 +15,7 @@ import java.util.List;
 @Entity
 public class OfferEntity {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false, nullable = false)
     private Long id;
     @Column(name = "name")

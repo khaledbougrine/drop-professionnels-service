@@ -6,10 +6,10 @@ import lombok.Data;
 
 //@With
 @Data
-public class ClientDomain  {
-    private  String name;
-    private  String lastName;
-    private  Integer phoneNumber;
-    private  StatesEnum statesEnum;
+public class ClientDomain {
+    private String name;
+    private String lastName;
+    private Integer phoneNumber;
+    private StatesEnum statesEnum;
 
 }

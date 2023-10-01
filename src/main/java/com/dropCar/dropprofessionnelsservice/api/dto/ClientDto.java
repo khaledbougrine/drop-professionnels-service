@@ -11,5 +11,6 @@ public class ClientDto implements Serializable {
     private  String lastName;
     private  Integer phoneNumber;
     private  StatesEnum statesEnum;
+    private Long category_id;
 
 }
