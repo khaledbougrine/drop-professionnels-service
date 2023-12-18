@@ -27,8 +27,8 @@ public class OfferEntity {
     @Column(name = "isEnabled")
     private Boolean isEnabled = true;
 
-    @OneToMany
-    @JoinColumn(name = "module_id")
-    private List<SubscriptionEntity> subscriptionEntity;
+//    @OneToMany
+//    @JoinColumn(name = "module_id")
+//    private List<SubscriptionEntity> subscriptionEntity;
 
 }

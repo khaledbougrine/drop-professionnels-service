@@ -1,6 +1,6 @@
 package com.dropCar.dropprofessionnelsservice.application.create;
 
-import com.dropCar.dropprofessionnelsservice.api.dto.CarDto;
+import com.dropCar.dropprofessionnelsservice.api.dto.UserCarCreationDto;
 import com.dropCar.dropprofessionnelsservice.infrastructure.persistance.models.CarEntity;
 import com.dropCar.dropprofessionnelsservice.infrastructure.persistance.models.CategoryEntity;
 import com.dropCar.dropprofessionnelsservice.infrastructure.persistance.repositories.CarRepository;
@@ -21,16 +21,17 @@ public class CreateCar {
     private final CategoryRepository categoryRepository;
 
     @Transactional
-    public  CarDto create(final @NonNull CarDto carDto) {
-//        CarEntity carEntity = buildEntity(carDto);
-////        CategoryEntity categoryDb = categoryRepository.findCategoryEntitiesById(carDto.getCategory_id());
-//        carEntity.setCategory(categoryDb);
-//        CarEntity carDb = carRepository.save(carEntity);
-//        return fromDomainToDto(fromEntityToDomain(carDb));
-        return null;
+    public UserCarCreationDto create(final @NonNull UserCarCreationDto carDto) {
+        CarEntity carEntity = new CarEntity();
+        BeanUtils.copyProperties(carDto,carEntity);
+        CategoryEntity categoryDb = new CategoryEntity();
+        carEntity.setCategory(categoryDb);
+        CarEntity carDb = carRepository.save(carEntity);
+        return fromDomainToDto(fromEntityToDomain(carDb));
+
     }
 
-    private @NotNull CarEntity buildEntity(@NonNull final CarDto carDto) {
+    private @NotNull CarEntity buildEntity(@NonNull final UserCarCreationDto carDto) {
         CarEntity carEntity = new CarEntity();
         BeanUtils.copyProperties(carDto, carEntity);
         return carEntity;

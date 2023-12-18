@@ -4,7 +4,7 @@ import com.dropCar.dropprofessionnelsservice.api.dto.RegisterUserDto;
 import com.dropCar.dropprofessionnelsservice.api.dto.AuthenticationUserDto;
 import com.dropCar.dropprofessionnelsservice.api.dto.UserTokenDto;
 import com.dropCar.dropprofessionnelsservice.application.AuthService;
-import com.dropCar.dropprofessionnelsservice.application.create.CreateClient;
+import com.dropCar.dropprofessionnelsservice.application.create.CreateUser;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,15 +14,14 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/usr/")
-public class ClientController {
-    private final CreateClient createClient;
+public class UserController {
+    private final CreateUser createUser;
     private final AuthService authService;
 
     @PostMapping("register")
     public RegisterUserDto postClient(@RequestBody RegisterUserDto clientDto) {
         System.out.println(clientDto);
-        createClient.create(clientDto);
-
+        createUser.create(clientDto);
         return clientDto;
     }
 

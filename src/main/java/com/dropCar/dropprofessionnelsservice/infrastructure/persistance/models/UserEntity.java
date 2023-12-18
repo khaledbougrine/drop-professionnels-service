@@ -1,7 +1,5 @@
 package com.dropCar.dropprofessionnelsservice.infrastructure.persistance.models;
 
-import org.springframework.stereotype.Indexed;
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,7 +18,7 @@ import java.util.List;
 		@Index(name = "id_index", columnList = "id",unique = true),
 })
 @Entity
-public class ClientEntity {
+public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -29,12 +27,16 @@ public class ClientEntity {
     private String name;
     @Column(name = "password", nullable = false)
     private String password;
-    @Column(name = "phone_number", nullable = false)
+    @Column(name = "phoneNumber", nullable = false)
     private String phoneNumber;
-    @Column(name = "user_name", nullable = false)
+    @Column(name = "userName", nullable = false)
     private String userName;
-    @OneToOne
+
+//    @OneToOne(mappedBy = "client")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "subscription_id", referencedColumnName = "id")
     private SubscriptionEntity subscriptionEntity;
+
     @OneToMany
     @JoinColumn(name = "client_id" )
     private List<CarEntity> carList;

@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -32,5 +31,5 @@ public class CarEntity {
     private CategoryEntity category;
     @ManyToOne
     @JoinColumn(name = "client_id", insertable = false, updatable = false)
-    private ClientEntity client;
+    private UserEntity client;
 }

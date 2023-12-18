@@ -1,6 +1,6 @@
 package com.dropCar.dropprofessionnelsservice.Configuration;
 
-import com.dropCar.dropprofessionnelsservice.application.domain.ClientSecurityDomain;
+import com.dropCar.dropprofessionnelsservice.application.domain.UserSecurityDomain;
 import com.dropCar.dropprofessionnelsservice.application.load.ClientLoader;
 import com.dropCar.dropprofessionnelsservice.utils.JwtHelper;
 import jakarta.servlet.FilterChain;
@@ -17,14 +17,12 @@ import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
-import org.springframework.security.web.authentication.logout.LogoutHandler;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
@@ -52,7 +50,7 @@ public class SecurityConfig {
                 final String jwtToken = authHeader.substring(7);
                 final String userName = JwtHelper.extractUsername(jwtToken);
                 if (userName != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-                    ClientSecurityDomain userDetails = clientLoader.loadUserByUsername(userName);
+                    UserSecurityDomain userDetails = clientLoader.loadUserByUsername(userName);
                     UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
                             userDetails,
                             null,

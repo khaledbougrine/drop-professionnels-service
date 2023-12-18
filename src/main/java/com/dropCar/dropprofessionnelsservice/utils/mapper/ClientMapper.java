@@ -1,9 +1,9 @@
 package com.dropCar.dropprofessionnelsservice.utils.mapper;
 
 import com.dropCar.dropprofessionnelsservice.api.dto.RegisterUserDto;
-import com.dropCar.dropprofessionnelsservice.application.domain.ClientDomain;
-import com.dropCar.dropprofessionnelsservice.application.domain.ClientSecurityDomain;
-import com.dropCar.dropprofessionnelsservice.infrastructure.persistance.models.ClientEntity;
+import com.dropCar.dropprofessionnelsservice.application.domain.UserDomain;
+import com.dropCar.dropprofessionnelsservice.application.domain.UserSecurityDomain;
+import com.dropCar.dropprofessionnelsservice.infrastructure.persistance.models.UserEntity;
 import jakarta.validation.constraints.NotNull;
 import lombok.NonNull;
 import org.springframework.beans.BeanUtils;
@@ -14,14 +14,14 @@ import org.springframework.beans.BeanUtils;
 public final class ClientMapper {
 
     /**
-     * Converts a ClientDomain object to a ClientDto object.
+     * Converts a UserDomain object to a CustomerRegistrationDto object.
      *
-     * @param clientDomain The ClientDomain object to be converted.
-     * @return The corresponding ClientDto object.
+     * @param userDomain The UserDomain object to be converted.
+     * @return The corresponding CustomerRegistrationDto object.
      */
-    public static @NonNull RegisterUserDto fromDomainToDto(final @NotNull ClientDomain clientDomain) {
+    public static @NonNull RegisterUserDto fromDomainToDto(final @NotNull UserDomain userDomain) {
         final RegisterUserDto clientDto = new RegisterUserDto();
-        BeanUtils.copyProperties(clientDomain, clientDto);
+        BeanUtils.copyProperties(userDomain, clientDto);
 
         // TODO: Implement the mapping logic if needed.
 
@@ -29,39 +29,39 @@ public final class ClientMapper {
     }
 
     /**
-     * Converts a ClientDto object to a ClientDomain object.
+     * Converts a CustomerRegistrationDto object to a UserDomain object.
      *
-     * @param clientDto The ClientDto object to be converted.
-     * @return The corresponding ClientDomain object.
+     * @param clientDto The CustomerRegistrationDto object to be converted.
+     * @return The corresponding UserDomain object.
      */
-    public static @NonNull ClientDomain fromDtoToDomain(final @NotNull RegisterUserDto clientDto) {
-        final ClientDomain clientDomain = new ClientDomain();
-        BeanUtils.copyProperties(clientDto, clientDomain);
+    public static @NonNull UserDomain fromDtoToDomain(final @NotNull RegisterUserDto clientDto) {
+        final UserDomain userDomain = new UserDomain();
+        BeanUtils.copyProperties(clientDto, userDomain);
 
         // TODO: Implement the mapping logic if needed.
 
-        return clientDomain;
+        return userDomain;
     }
 
     /**
-     * Converts a ClientEntity object to a ClientDomain object.
+     * Converts a UserEntity object to a UserDomain object.
      *
-     * @param clientEntity The ClientEntity object to be converted.
-     * @return The corresponding ClientDomain object.
+     * @param userEntity The UserEntity object to be converted.
+     * @return The corresponding UserDomain object.
      */
-    public static @NonNull ClientDomain fromEntityToDomain(@NonNull final ClientEntity clientEntity) {
-        final ClientDomain clientDomain = new ClientDomain();
-        BeanUtils.copyProperties(clientEntity, clientDomain);
+    public static @NonNull UserDomain fromEntityToDomain(@NonNull final UserEntity userEntity) {
+        final UserDomain userDomain = new UserDomain();
+        BeanUtils.copyProperties(userEntity, userDomain);
 
         // TODO: Implement the mapping logic if needed.
 
-        return clientDomain;
+        return userDomain;
     }
 
 
-    public static @NonNull ClientSecurityDomain fromEntityToSecurityDomain(@NonNull final ClientEntity clientEntity) {
-        final ClientSecurityDomain clientDomain = new ClientSecurityDomain();
-        BeanUtils.copyProperties(clientEntity, clientDomain);
+    public static @NonNull UserSecurityDomain fromEntityToSecurityDomain(@NonNull final UserEntity userEntity) {
+        final UserSecurityDomain clientDomain = new UserSecurityDomain();
+        BeanUtils.copyProperties(userEntity, clientDomain);
 
         // TODO: Implement the mapping logic if needed.
 

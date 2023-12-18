@@ -96,6 +96,19 @@
         <addForeignKeyConstraint baseColumnNames="category_id" baseTableName="car" constraintName="FK_CAR_ON_CATEGORY" referencedColumnNames="id" referencedTableName="category"/>
         <addForeignKeyConstraint baseColumnNames="client_id" baseTableName="car" constraintName="FK_CAR_ON_CLIENT" referencedColumnNames="id" referencedTableName="client"/>
     </changeSet>
+    <changeSet id="1697906783977-1" author="ASUS">
+        <addColumn tableName="subscription">
+            <column name="type_enum" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1697908926112-1" author="ASUS">
+        <addColumn tableName="client">
+            <column name="subscription_id" type="BIGINT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1697909027452-1" author="ASUS">
+        <dropColumn tableName="subscription" columnName="module_id"/>
+    </changeSet>
 
 
 </databaseChangeLog>

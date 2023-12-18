@@ -6,7 +6,7 @@ import lombok.Data;
 
 //@With
 @Data
-public class ClientDomain {
+public class UserDomain {
     private String name;
     private String lastName;
     private Integer phoneNumber;

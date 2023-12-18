@@ -1,18 +1,15 @@
 package com.dropCar.dropprofessionnelsservice.utils;
 
-import com.dropCar.dropprofessionnelsservice.application.domain.ClientSecurityDomain;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import jakarta.servlet.http.HttpServletRequest;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import java.security.Key;
 import java.util.Date;
 import java.util.Map;
-import java.util.function.Function;
 
 public class JwtHelper {
 
