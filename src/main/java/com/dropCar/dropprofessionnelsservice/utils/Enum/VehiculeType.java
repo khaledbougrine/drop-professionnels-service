@@ -5,8 +5,14 @@ public enum VehiculeType {
     SEDAN,
     SUV,
     SPORTS_CAR,
-    TRUCK,
     VAN,
-    HATCHBACK
+    HATCHBACK,
+    OTHER;
+    private static final VehiculeType[] ENUMS = VehiculeType.values();
+
+
+    public static VehiculeType of(int alias) {
+        return ENUMS[alias - 1];
+    }
 
 }

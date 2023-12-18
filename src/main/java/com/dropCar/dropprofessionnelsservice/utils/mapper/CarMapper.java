@@ -1,21 +1,20 @@
 package com.dropCar.dropprofessionnelsservice.utils.mapper;
 
-import com.dropCar.dropprofessionnelsservice.api.dto.CarDto;
+import com.dropCar.dropprofessionnelsservice.api.dto.UserCarCreationDto;
 import com.dropCar.dropprofessionnelsservice.application.domain.CarDomain;
 import com.dropCar.dropprofessionnelsservice.infrastructure.persistance.models.CarEntity;
-import jakarta.validation.constraints.NotNull;
 import lombok.NonNull;
 import org.springframework.beans.BeanUtils;
 
 public final class CarMapper {
-    public static @NonNull  CarDomain fromDtoToDomain(final @NonNull  CarDto carDto){
+    public static @NonNull  CarDomain fromDtoToDomain(final @NonNull UserCarCreationDto carDto){
         final CarDomain carDomain = new CarDomain();
         BeanUtils.copyProperties(carDto,carDomain);
 
         return carDomain;
     }
-    public static @NonNull CarDto fromDomainToDto(final @NonNull CarDomain carDomain){
-        final CarDto carDto =new CarDto();
+    public static @NonNull UserCarCreationDto fromDomainToDto(final @NonNull CarDomain carDomain){
+        final UserCarCreationDto carDto =new UserCarCreationDto();
         BeanUtils.copyProperties(carDomain,carDto);
 
         return carDto;

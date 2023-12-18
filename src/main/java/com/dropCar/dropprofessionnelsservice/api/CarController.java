@@ -1,8 +1,7 @@
 package com.dropCar.dropprofessionnelsservice.api;
 
-import com.dropCar.dropprofessionnelsservice.api.dto.CarDto;
+import com.dropCar.dropprofessionnelsservice.api.dto.UserCarCreationDto;
 import com.dropCar.dropprofessionnelsservice.application.create.CreateCar;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,8 +14,8 @@ public class CarController {
     @Autowired
      CreateCar createCar;
    @PostMapping("/add")
-    public CarDto createCar(@RequestBody CarDto carDto){
-        createCar.create(carDto);
-        return carDto;
+    public UserCarCreationDto createCar(@RequestBody UserCarCreationDto userCarCreationDto){
+        createCar.create(userCarCreationDto);
+        return userCarCreationDto;
     }
 }

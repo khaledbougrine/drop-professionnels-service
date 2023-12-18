@@ -2,8 +2,8 @@ package com.dropCar.dropprofessionnelsservice.infrastructure.persistance.models;
 
 
 // Jakarta imports
+import com.dropCar.dropprofessionnelsservice.utils.Enum.OfferTypeEnum;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 
 // Lombok imports
 import lombok.AllArgsConstructor;
@@ -16,7 +16,6 @@ import org.springframework.lang.Nullable;
 
 // J2EE imports
 import java.time.Instant;
-import java.util.List;
 
 /**
  * Entity to manage the persistence of the client subscriptions
@@ -57,19 +56,21 @@ public class SubscriptionEntity extends AAuditableVersionedEntity {
     @Nullable
     private Instant endDate;
 
+    @Column(name = "type_enum")
+    @Enumerated(EnumType.STRING)
+    private OfferTypeEnum typeEnum;
+
     //////////////////
     // ASSOCIATIONS //
     //////////////////
-//    /** Details about the client associated to this partner module subscription */
-//    @NotNull(message = "{subscription.client.id.not-null}")
-//    @OneToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.PERSIST)
-////    @JoinColumn(name = "client_id", nullable = false, foreignKey = @ForeignKey(name = "FK_SUBSCRIPTION_CLIENT"))
-//    private ClientEntity client;
+    /** Details about the client associated to this partner module subscription */
+    @OneToOne(mappedBy = "subscriptionEntity")
+    private UserEntity client;
 
-    /** Details about the partner module associated to this client subscription */
-    @NotNull(message = "{subscription.module.id.not-null}")
-    @ManyToOne
-    @JoinColumn(name = "module_id", insertable = false, updatable = false)
-    private OfferEntity module;
+//    /** Details about the partner module associated to this client subscription */
+//    @NotNull(message = "{subscription.module.id.not-null}")
+//    @ManyToOne
+//    @JoinColumn(name = "module_id", insertable = false, updatable = false)
+//    private OfferEntity module;
 
 }

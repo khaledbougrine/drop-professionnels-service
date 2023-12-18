@@ -6,15 +6,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @Entity
 @Table(name = "car", indexes = {
-        @Index(name = "MultiIndex", columnList = "id, client_id", unique = true)
-
+        @Index(name = "MultiIndex", columnList = "id, client_id", unique = true),
+        @Index(name = "CarId",columnList = "id")
 })
 public class CarEntity {
 
@@ -30,7 +29,8 @@ public class CarEntity {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "category_id")
     private CategoryEntity category;
+
     @ManyToOne
     @JoinColumn(name = "client_id", insertable = false, updatable = false)
-    private ClientEntity client;
+    private UserEntity client;
 }

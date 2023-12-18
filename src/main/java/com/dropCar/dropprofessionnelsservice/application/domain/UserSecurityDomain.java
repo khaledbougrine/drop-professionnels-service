@@ -1,7 +1,5 @@
 package com.dropCar.dropprofessionnelsservice.application.domain;
 
-import com.dropCar.dropprofessionnelsservice.utils.Enum.StatesEnum;
-import lombok.Builder;
 import lombok.Data;
 import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
@@ -13,7 +11,7 @@ import java.util.List;
 
 @Data
 @ToString
-public class ClientSecurityDomain implements UserDetails {
+public class UserSecurityDomain implements UserDetails {
     private String password;
     private String userName;
 

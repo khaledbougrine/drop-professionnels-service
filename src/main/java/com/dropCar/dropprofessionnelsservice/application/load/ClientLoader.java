@@ -1,8 +1,9 @@
 package com.dropCar.dropprofessionnelsservice.application.load;
 
-import com.dropCar.dropprofessionnelsservice.application.domain.ClientSecurityDomain;
-import com.dropCar.dropprofessionnelsservice.infrastructure.persistance.repositories.ClientRepository;
-import com.dropCar.dropprofessionnelsservice.utils.mapper.ClientMapper;
+import com.dropCar.dropprofessionnelsservice.application.domain.UserDomain;
+import com.dropCar.dropprofessionnelsservice.application.domain.UserSecurityDomain;
+import com.dropCar.dropprofessionnelsservice.infrastructure.persistance.repositories.UserRepository;
+import com.dropCar.dropprofessionnelsservice.utils.mapper.UserMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -12,16 +13,19 @@ import org.springframework.stereotype.Service;
 @Service
 public class ClientLoader implements UserDetailsService {
 
-    private  final ClientRepository clientRepository;
+    private final UserRepository userRepository;
 
 
     @Override
-    public ClientSecurityDomain loadUserByUsername(String username) throws UsernameNotFoundException {
-        var usr=   clientRepository.findByUserName(username).map(ClientMapper::fromEntityToSecurityDomain).orElseThrow();
-        return  usr ;
+    public UserSecurityDomain loadUserByUsername(String username) throws UsernameNotFoundException {
+        var usr = userRepository.findByUserName(username).map(UserMapper::fromEntityToSecurityDomain).orElseThrow();
+        return usr;
     }
 
-
+    public UserDomain loadUserByUsernameForApi(String username) throws UsernameNotFoundException {
+        var usr = userRepository.findByUserName(username).map(UserMapper::fromEntityToDomain).orElseThrow();
+        return usr;
+    }
 
 
 }

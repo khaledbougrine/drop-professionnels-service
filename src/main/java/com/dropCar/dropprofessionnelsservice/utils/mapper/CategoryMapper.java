@@ -1,10 +1,7 @@
 package com.dropCar.dropprofessionnelsservice.utils.mapper;
 
-import com.dropCar.dropprofessionnelsservice.api.dto.CarDto;
 import com.dropCar.dropprofessionnelsservice.api.dto.CategoryDto;
-import com.dropCar.dropprofessionnelsservice.application.domain.CarDomain;
 import com.dropCar.dropprofessionnelsservice.application.domain.CategoryDomain;
-import com.dropCar.dropprofessionnelsservice.infrastructure.persistance.models.CarEntity;
 import com.dropCar.dropprofessionnelsservice.infrastructure.persistance.models.CategoryEntity;
 import lombok.NonNull;
 import org.springframework.beans.BeanUtils;
