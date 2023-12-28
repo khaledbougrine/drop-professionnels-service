@@ -56,7 +56,7 @@ public class UserCarCreationDto implements Serializable {
     /**
      * The Last date of technical inspection of the car.
      */
-    @NotNull
+
     private Date DernierControleTechnique;
 
     /**
@@ -70,4 +70,6 @@ public class UserCarCreationDto implements Serializable {
      */
     @NotNull
     private VehiculeType typeDeVehicule;
+    @NotNull
+    private Integer age;
 }

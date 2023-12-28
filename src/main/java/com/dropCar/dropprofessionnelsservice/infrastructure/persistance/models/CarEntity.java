@@ -1,5 +1,6 @@
 package com.dropCar.dropprofessionnelsservice.infrastructure.persistance.models;
 
+import com.dropCar.dropprofessionnelsservice.utils.Enum.VehiculeType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -29,6 +30,11 @@ public class CarEntity {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "category_id")
     private CategoryEntity category;
+
+    @Column(name = "type_de_vehicule")
+    @Enumerated(EnumType.STRING)
+    private VehiculeType typeDeVehicule;
+
     @ManyToOne
     @JoinColumn(name = "client_id", insertable = false, updatable = false)
     private UserEntity client;

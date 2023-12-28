@@ -109,6 +109,11 @@
     <changeSet id="1697909027452-1" author="ASUS">
         <dropColumn tableName="subscription" columnName="module_id"/>
     </changeSet>
+    <changeSet id="1703355907567-1" author="anoir">
+        <addColumn tableName="car">
+            <column name="type_de_vehicule" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
 
 
 </databaseChangeLog>

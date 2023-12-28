@@ -27,9 +27,9 @@ public class UserEntity {
     private String name;
     @Column(name = "password", nullable = false)
     private String password;
-    @Column(name = "phoneNumber", nullable = false)
+    @Column(name = "phone_number", nullable = false)
     private String phoneNumber;
-    @Column(name = "userName", nullable = false)
+    @Column(name = "user_name", nullable = false)
     private String userName;
 
 //    @OneToOne(mappedBy = "client")

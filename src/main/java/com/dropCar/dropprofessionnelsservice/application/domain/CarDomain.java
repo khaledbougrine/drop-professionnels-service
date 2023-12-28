@@ -8,7 +8,7 @@ public class CarDomain {
     private String brand;
     private String model;
     private Double kilometrage;
-    private int age;
     private Integer category_id;
+    private Integer age;
 
 }
