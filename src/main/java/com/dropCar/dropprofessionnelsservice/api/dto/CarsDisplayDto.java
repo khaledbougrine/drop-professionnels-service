@@ -37,12 +37,6 @@ public class CarsDisplayDto {
     private BoiteVitesse boiteVitesse;
 
     /**
-     * The Last date of technical inspection of the car.
-     */
-    @NotNull
-    private Date DernierControleTechnique;
-
-    /**
      * The user ID associated with the car.
      */
     @NotNull

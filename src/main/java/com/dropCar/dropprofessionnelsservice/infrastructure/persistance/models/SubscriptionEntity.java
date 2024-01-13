@@ -63,9 +63,9 @@ public class SubscriptionEntity extends AAuditableVersionedEntity {
     //////////////////
     // ASSOCIATIONS //
     //////////////////
-    /** Details about the client associated to this partner module subscription */
-    @OneToOne(mappedBy = "subscriptionEntity")
-    private UserEntity client;
+//    /** Details about the client associated to this partner module subscription */
+//    @OneToOne(mappedBy = "subscriptionEntity")
+//    private UserEntity client;
 
 //    /** Details about the partner module associated to this client subscription */
 //    @NotNull(message = "{subscription.module.id.not-null}")

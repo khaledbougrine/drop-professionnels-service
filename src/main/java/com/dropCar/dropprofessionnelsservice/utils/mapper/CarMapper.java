@@ -1,5 +1,6 @@
 package com.dropCar.dropprofessionnelsservice.utils.mapper;
 
+import com.dropCar.dropprofessionnelsservice.api.dto.CarsDisplayDto;
 import com.dropCar.dropprofessionnelsservice.api.dto.UserCarCreationDto;
 import com.dropCar.dropprofessionnelsservice.application.domain.CarDomain;
 import com.dropCar.dropprofessionnelsservice.infrastructure.persistance.models.CarEntity;
@@ -23,5 +24,10 @@ public final class CarMapper {
         final CarDomain carDomain =new CarDomain();
         BeanUtils.copyProperties(carEntity,carDomain);
         return carDomain;
+    }
+    public static @NonNull CarsDisplayDto fromDomainToDtoDisplayCar(final @NonNull CarDomain carDomain){
+        final CarsDisplayDto carsDisplayDtoDto =new CarsDisplayDto();
+        BeanUtils.copyProperties(carDomain,carsDisplayDtoDto);
+        return carsDisplayDtoDto;
     }
 }

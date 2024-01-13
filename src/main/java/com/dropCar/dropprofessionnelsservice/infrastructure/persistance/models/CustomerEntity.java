@@ -7,15 +7,17 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @Table(name = "customer", indexes = {
-        @Index(name = "ui_index", columnList = "user_id", unique = true),
-        @Index(name = "ci_index",columnList = "customer_id",unique = true),
-        @Index(name = "pn_index",columnList = "phone_number",unique = true),
+        @Index(name = "customer_user_index", columnList = "client_id"),
+        @Index(name = "customer_id_index",columnList = "id",unique = true)
 })
+@Entity
 public class CustomerEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,4 +41,7 @@ public class CustomerEntity {
     @JoinColumn(name = "client_id", insertable = false, updatable = false)
     private UserEntity user;
 
+    @OneToMany
+    @JoinColumn(name = "customer_id" )
+    private List<LocationEntity> locationEntities = new ArrayList<>();
 }

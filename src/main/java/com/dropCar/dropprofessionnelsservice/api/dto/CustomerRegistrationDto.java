@@ -37,4 +37,7 @@ public class CustomerRegistrationDto implements Serializable {
      */
     private StatesEnum statesEnum;
 
+    @NotNull
+    private Long userId;
+
 }

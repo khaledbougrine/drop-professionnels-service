@@ -56,17 +56,15 @@ public class UserEntity {
 //    @JoinColumn(name = "subscription_id", referencedColumnName = "id")
 //    private SubscriptionEntity subscriptionEntity;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "client_id" )
     private List<CarEntity> carList = new ArrayList<>();
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "client_id" )
     private List<CustomerEntity> customerList = new ArrayList<>();
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "client_id" )
     private List<LocationEntity> locationList = new ArrayList<>();
-
-
 }

@@ -28,7 +28,6 @@ import static java.time.temporal.ChronoUnit.DAYS;
 public class CreateUser {
 
     private final UserRepository userRepository;
-
     private final PasswordEncoder passwordEncoder;
     private  final ModuleRepository moduleRepository;
 

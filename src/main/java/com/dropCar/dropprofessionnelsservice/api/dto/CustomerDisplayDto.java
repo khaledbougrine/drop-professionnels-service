@@ -3,11 +3,14 @@ package com.dropCar.dropprofessionnelsservice.api.dto;
 import com.dropCar.dropprofessionnelsservice.utils.Enum.StatesEnum;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import lombok.Data;
 
-public class CustomerDisplayDto {
+import java.io.Serializable;
+@Data
+public class CustomerDisplayDto implements Serializable {
 
     @NotNull
-    private Integer customerId;
+    private Long Id;
     /**
      * The client's first name.
      */
@@ -30,4 +33,6 @@ public class CustomerDisplayDto {
      * The state of the client, represented by StatesEnum.
      */
     private StatesEnum statesEnum;
+
+
 }

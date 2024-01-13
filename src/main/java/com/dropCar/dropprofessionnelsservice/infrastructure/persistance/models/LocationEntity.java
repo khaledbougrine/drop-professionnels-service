@@ -9,21 +9,23 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.swing.text.DefaultEditorKit;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @Table(name = "location", indexes = {
-        @Index(name = "ui_index", columnList = "user_id", unique = true),
-        @Index(name = "ci_index",columnList = "customer_id",unique = true),
+        @Index(name = "cari_index", columnList = "car_id"),
+        @Index(name = "ci_index",columnList = "customer_id"),
 })
 @Entity
 public class LocationEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
     private Long id;
 
     @Column(name = "start_date")
@@ -54,6 +56,17 @@ public class LocationEntity {
 
     @Column(name = "description")
     private String description;
+
+    @ManyToOne
+    @JoinColumn(name = "car_id", updatable = false)
+    private CarEntity carEntity;
+
+    @ManyToOne
+    @JoinColumn(name = "customer_id", updatable = false)
+    private CustomerEntity customerEntity;
+    @ManyToOne
+    @JoinColumn(name = "client_id", updatable = false)
+    private UserEntity userEntity;
 
 
 }

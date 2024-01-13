@@ -128,23 +128,128 @@
             <column name="enterprise_name" type="VARCHAR(255)"/>
         </addColumn>
     </changeSet>
-    <changeSet id="1703684830478-1" author="ASUS">
-        <createTable tableName="location"/>
-        <addColumn tableName="location">
-            <column name="id"/>
-            <column name="start_date"/>
-            <column name="end_date"/>
-            <column name="rental_days"/>
-            <column name="amount"/>
-            <column name="vehicle"/>
-            <column name="rent_status"/>
-            <column name="guarantee"/>
-            <column name="guarantee_amount"/>
-            <column name="description"/>
+    <changeSet id="1703784712381-1" author="ASUS">
+        <createTable tableName="customer">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_customer"/>
+            </column>
+            <column name="first_name" type="VARCHAR(255)"/>
+            <column name="last_name" type="VARCHAR(255)"/>
+            <column name="phone_number" type="INT"/>
+            <column name="state" type="VARCHAR(255)"/>
+            <column name="client_id" type="BIGINT"/>
+        </createTable>
+        <addForeignKeyConstraint baseColumnNames="client_id" baseTableName="customer" constraintName="FK_CUSTOMER_ON_CLIENT" referencedColumnNames="id" referencedTableName="user"/>
+        <createIndex indexName="customer_user_index" tableName="customer" unique="true">
             <column name="client_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet id="1703872139694-1" author="ASUS">
+        <dropIndex tableName="customer" indexName="customer_user_index"/>
+        <createIndex tableName="customer" indexName="customer_user_index">
+            <column name="client_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet id="1703784589226-1" author="ASUS">
+        <createTable tableName="location">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_location"/>
+            </column>
+            <column name="start_date" type="DATETIME"/>
+            <column name="end_date" type="DATETIME"/>
+            <column name="rental_days" type="INT"/>
+            <column name="amount" type="INT"/>
+            <column name="vehicle" type="VARCHAR(255)"/>
+            <column name="rent_status" type="VARCHAR(255)"/>
+            <column name="guarantee" type="VARCHAR(255)"/>
+            <column name="guarantee_amount" type="INT"/>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="car_id" type="BIGINT"/>
+            <column name="customer_id" type="BIGINT"/>
+            <column name="client_id" type="BIGINT"/>
+        </createTable>
+        <addForeignKeyConstraint baseColumnNames="car_id" baseTableName="location" constraintName="FK_LOCATION_ON_CAR" referencedColumnNames="id" referencedTableName="car"/>
+        <addForeignKeyConstraint baseColumnNames="client_id" baseTableName="location" constraintName="FK_LOCATION_ON_CLIENT" referencedColumnNames="id" referencedTableName="user"/>
+        <createIndex indexName="ui_index" tableName="location" unique="true">
+            <column name="client_id"/>
+        </createIndex>
+        <addForeignKeyConstraint baseColumnNames="customer_id" baseTableName="location" constraintName="FK_LOCATION_ON_CUSTOMER" referencedColumnNames="id" referencedTableName="customer"/>
+        <createIndex indexName="ci_index" tableName="location" unique="true">
+            <column name="customer_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet id="1703786982541-1" author="ASUS">
+        <dropColumn tableName="car" columnName="age"/>
+    </changeSet>
+    <changeSet id="1703788390201-1" author="ASUS">
+        <addUniqueConstraint tableName="car" columnNames="immatricule" constraintName="user_cars"/>
+    </changeSet>
+    <changeSet id="1703789273997-1" author="ASUS">
+        <addColumn tableName="car">
+            <column name="dernier_controle_technique" type="DATETIME"/>
         </addColumn>
-        <addAutoIncrement tableName="location" columnName="id"/>
+    </changeSet>
+    <changeSet id="1703791723971-1" author="ASUS">
+        <dropColumn tableName="car" columnName="dernier_controle_technique"/>
+        <addColumn tableName="car">
+            <column name="DernierControleTechnique" type="timestamp"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1703792063179-1" author="ASUS">
+        <dropColumn tableName="car" columnName="DernierControleTechnique"/>
+        <addColumn tableName="car">
+            <column name="dernier_controle_technique" type="timestamp"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1703861765828-1" author="ASUS">
+        <dropColumn tableName="car" columnName="dernier_controle_technique"/>
+    </changeSet>
 
+    <changeSet id="1703863509300-1" author="ASUS">
+        <addColumn tableName="car">
+            <column name="motorisation" type="VARCHAR(255)"/>
+        </addColumn>
+        <addColumn tableName="car">
+            <column name="boiteVitesse" type="VARCHAR(255)"/>
+        </addColumn>
+        <addColumn tableName="car">
+            <column name="typeDeVehicule" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="1703862698218-1" author="ASUS">
+        <renameColumn tableName="car" oldColumnName="client_id" newColumnName="user_id"/>
+    </changeSet>
+    <changeSet id="1703863775490-1" author="ASUS">
+        <renameColumn tableName="car" oldColumnName="user_id" newColumnName="client_id"/>
+    </changeSet>
+    <changeSet id="1703864294292-1" author="ASUS">
+        <dropColumn tableName="car" columnName="boiteVitesse"/>
+    </changeSet>
+    <changeSet id="1703864320323-1" author="ASUS">
+        <addColumn tableName="car">
+            <column name="boite_vitesse" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1703864529900-1" author="ASUS">
+        <dropColumn tableName="car" columnName="typedevehicule"/>
+    </changeSet>
+    <changeSet id="1703864546000-1" author="ASUS">
+        <addColumn tableName="car">
+            <column name="type_de_vehicule" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1703879356446-1" author="ASUS">
+        <dropIndex tableName="location" indexName="ui_index"/>
+        <dropIndex tableName="location" indexName="ci_index"/>
+    </changeSet>
+    <changeSet id="1703879538323-1" author="ASUS">
+        <createIndex tableName="location" indexName="cari_index">
+            <column name="car_id"/>
+        </createIndex>
+        <createIndex tableName="location" indexName="ci_index">
+            <column name="customer_id"/>
+        </createIndex>
     </changeSet>
 
 

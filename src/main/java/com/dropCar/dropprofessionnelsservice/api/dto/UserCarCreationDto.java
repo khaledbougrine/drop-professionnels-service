@@ -8,6 +8,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.time.Instant;
 import java.util.Date;
 
 /**
@@ -54,16 +55,10 @@ public class UserCarCreationDto implements Serializable {
     private BoiteVitesse boiteVitesse;
 
     /**
-     * The Last date of technical inspection of the car.
-     */
-    @NotNull
-    private Date DernierControleTechnique;
-
-    /**
      * The user ID associated with the car.
      */
     @NotNull
-    private Integer userId;
+    private Long userId;
 
     /**
      * The type of the car create.

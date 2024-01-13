@@ -1,9 +1,7 @@
 package com.dropCar.dropprofessionnelsservice.api.dto;
 
 import com.dropCar.dropprofessionnelsservice.utils.Enum.StatesEnum;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import lombok.Data;
 import lombok.NonNull;
 
@@ -39,7 +37,7 @@ public class RegisterUserDto implements Serializable {
     /**
      * The user's phone number.
      */
-    @NotEmpty
+    //@Pattern(regexp = "^[9245]\\d{7}$\n")
     private String phoneNumber;
 
     /**
