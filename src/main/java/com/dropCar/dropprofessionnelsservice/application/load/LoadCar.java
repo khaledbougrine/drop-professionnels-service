@@ -1,6 +1,6 @@
 package com.dropCar.dropprofessionnelsservice.application.load;
 
-public class loadCar {
+public class LoadCar {
 
 
 }

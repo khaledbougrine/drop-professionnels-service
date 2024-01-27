@@ -26,4 +26,5 @@ public class LocationController {
         return locationLoader.loadLocationListByUerId(userId);
 
     }
+
 }

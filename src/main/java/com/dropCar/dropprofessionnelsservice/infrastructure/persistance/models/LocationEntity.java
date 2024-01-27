@@ -1,18 +1,19 @@
 package com.dropCar.dropprofessionnelsservice.infrastructure.persistance.models;
 
 
+// Local imports
 import com.dropCar.dropprofessionnelsservice.utils.Enum.Garantie;
 import com.dropCar.dropprofessionnelsservice.utils.Enum.Statut;
+
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.swing.text.DefaultEditorKit;
+import java.time.Instant;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -34,8 +35,8 @@ public class LocationEntity {
     @Column(name = "end_date")
     private Date endDate;
 
-    @Column(name = "rental_days")
-    private Integer rentalDays;
+//    @Column(name = "rental_days")
+//    private Integer rentalDays;
 
     @Column(name = "amount")
     private Integer amount;

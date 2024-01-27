@@ -10,6 +10,7 @@ import com.dropCar.dropprofessionnelsservice.infrastructure.persistance.reposito
 import com.dropCar.dropprofessionnelsservice.infrastructure.persistance.repositories.CustomerRepository;
 import com.dropCar.dropprofessionnelsservice.infrastructure.persistance.repositories.LocationRepository;
 import com.dropCar.dropprofessionnelsservice.infrastructure.persistance.repositories.UserRepository;
+import com.dropCar.dropprofessionnelsservice.utils.exception.LocationException;
 import com.dropCar.dropprofessionnelsservice.utils.mapper.CarMapper;
 import com.dropCar.dropprofessionnelsservice.utils.mapper.LocationMapper;
 import jakarta.transaction.Transactional;
@@ -37,7 +38,10 @@ public class CreateLocation {
     private @NonNull List<LocationEntity> buildEntity(@NonNull final LocationCreationDto locationCreationDto) {
 
         var user = userRepository.findById(locationCreationDto.getClientId()).orElseThrow();
-
+        List<LocationDisplayDto> locationInRangeList = locationRepository.findLocationsByCarIdInDateRange(locationCreationDto.getCarId(), locationCreationDto.getClientId(), locationCreationDto.getStartDate(), locationCreationDto.getEndDate()).stream().map(LocationMapper::fromLocationEntityToDtoDisplayLocation).toList();
+        if(!locationInRangeList.isEmpty()){
+            throw new LocationException(locationInRangeList);
+        }
         LocationEntity locationEntity = new LocationEntity();
         BeanUtils.copyProperties(locationCreationDto, locationEntity);
 
@@ -47,8 +51,7 @@ public class CreateLocation {
         CarEntity car = carRepository.findById(locationCreationDto.getCarId()).orElseThrow();
         locationEntity.setCarEntity(car);
         locationEntity.setUserEntity(user);
-
-         locationRepository.save(locationEntity);
+        locationRepository.save(locationEntity);
         return user.getLocationList();
     }
 

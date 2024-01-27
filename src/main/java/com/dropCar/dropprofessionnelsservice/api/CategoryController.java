@@ -16,6 +16,7 @@ public class CategoryController {
     CreateCategory createCategory;
     @PostMapping("/add")
     public CategoryDto addCategory(@RequestBody CategoryDto categoryDto){
+
         return createCategory.create(categoryDto);
     }
 

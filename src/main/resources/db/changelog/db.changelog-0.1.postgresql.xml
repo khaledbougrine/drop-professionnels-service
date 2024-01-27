@@ -251,6 +251,9 @@
             <column name="customer_id"/>
         </createIndex>
     </changeSet>
+    <changeSet id="1705248617232-1" author="ASUS">
+        <dropColumn tableName="location" columnName="rental_days"/>
+    </changeSet>
 
 
 </databaseChangeLog>
